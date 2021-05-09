@@ -3,6 +3,8 @@
 :root {
   --pinkish-red: rgb(250, 41, 83);
   --bright-pinkish-red: rgb(255, 71, 108);
+  --greyish: hsl(0, 0%, 75%);
+  --greyish-black: hsl(0, 0%, 12%);
 }
 
 * {
@@ -12,6 +14,8 @@
   word-spacing: 7px;
   font-size: 1.1rem;
   font-family: "Ubuntu Mono", sans-serif;
+  border-color: var(--greyish);
+  color: var(--greyish-black);
 }
 
 body {
@@ -142,7 +146,8 @@ body {
   background: var(--bright-pinkish-red);
   height: 350px;
   padding: 10px 0;
-  border: 0 rgb(92, 1, 1) ridge;
+  border: 0 rgb(92, 1, 1) solid;
+
   border-width: 20px 0;
   width: 100%;
 }
