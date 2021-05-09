@@ -5,6 +5,13 @@ body {
   background-color: aquamarine;
 }
 
+.btn {
+  cursor: pointer;
+  padding: 0;
+  /* display: block; */
+  /* float: left; */
+}
+
 .title {
   margin-top: 100px;
   font-size: 30px;
@@ -23,20 +30,66 @@ body {
 .cassette {
   display: block;
   height: 300px;
-  margin-top: 100px;
+  border: 10px solid rgb(255, 69, 0, 25%);
+  box-sizing: border-box;
 }
 
 .left-side-container {
   width: 410px;
   margin-left: 30px;
+  margin-top: 100px;
 }
 
 .controls {
   margin-top: 20px;
-  background-color: royalblue;
+  height: 60px;
+  background-color: rgb(250, 41, 83);
+  padding: 4px;
+  border: rgb(39, 29, 29) 2px solid;
+  box-sizing: border-box;
 }
 
 .cassette,
 .controls {
   width: 100%;
+}
+
+.control-btn {
+  width: 49px;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  margin: 0 16px;
+}
+
+.control-btn:first-child {
+  margin-left: 2px;
+}
+
+.control-btn:last-child {
+  margin-right: 0;
+}
+
+.previous-btn {
+  background-image: url("img/previous.png");
+}
+
+.play-btn {
+  background-image: url("img/play.png");
+}
+.pause-btn {
+  background-image: url("img/pause.png");
+}
+
+.next-btn {
+  background-image: url("img/next.png");
+}
+
+.mute-btn {
+  background-image: url("img/mute.png");
+}
+
+.sound-btn {
+  background-image: url("img/sound.png");
 }
