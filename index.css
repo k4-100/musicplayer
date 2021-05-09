@@ -1,11 +1,16 @@
 :root {
   --pinkish-red: rgb(250, 41, 83);
+  --bright-pinkish-red: rgb(255, 71, 108);
 }
 
 * {
   border-radius: 20px;
   text-align: center;
+  letter-spacing: 4px;
+  word-spacing: 7px;
+  font-size: 1.1rem;
 }
+
 body {
   background-color: aquamarine;
 }
@@ -58,6 +63,9 @@ body {
   padding: 4px;
   border: rgb(39, 29, 29) 2px solid;
   box-sizing: border-box;
+  letter-spacing: 0;
+  word-spacing: 0;
+  font-size: 1rem;
 }
 
 .cassette,
@@ -113,14 +121,23 @@ body {
   background: var(--pinkish-red);
   width: 350px;
   height: 540px;
-  /* display: inline-block; */
   margin-right: 30px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 15%;
-  padding: 0 10px;
+  padding: 0 20px;
   float: right;
+}
+
+.inner-container {
+  position: relative;
+  background: var(--bright-pinkish-red);
+  height: 350px;
+  padding: 10px 0;
+  border: 0 rgb(92, 1, 1) ridge;
+  border-width: 20px 0;
+  width: 100%;
 }
 
 .songs {
