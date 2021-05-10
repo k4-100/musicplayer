@@ -3,14 +3,17 @@ const audio = document.querySelector('#audio');
 
 // buttons
 const playBtn = document.querySelector('#play');
+const prevBtn = document.querySelector('#prev');
+const nextBtn = document.querySelector('#next');
+const muteBtn = document.querySelector('#next');
 
 // inner progress bar
-const innerProgressBar = document.querySelector('.inner-progress-bar');
+const innerProgressBar = document.querySelector('#inner-progress-bar');
 
-console.log(innerProgressBar);
+
 // other variables
 let intervalID = null;
-
+let songIndex = 0;
 
 const songs = [
     'jazzyfrenchy',
@@ -39,13 +42,25 @@ function pauseAudio(){
     audio.pause();
 }
 
-function adjustProgressBar(e){
-    if(!audio.paused){
-        const duration = audio.duration;
-        innerProgressBar.style.width = `calc( 100% * 
-            ${secondsPassed++ / duration}`;
-    }
+function previousSong(){
+    songIndex--;
 
+    if(songIndex < 0)
+        songIndex = songs.length-1;
+
+    loadSong( songs[songIndex] );
+    audio.play();
+}
+
+
+function nextSong(){
+    songIndex++;
+
+    if(songIndex > songs.length -1)
+        songIndex = 0;
+
+    loadSong( songs[songIndex] );
+    audio.play();
 }
 
 
@@ -61,6 +76,8 @@ function playOrPauseAudio(){
 
 // event listeners
 playBtn.addEventListener('click',playOrPauseAudio);
+prevBtn.addEventListener('click',previousSong);
+nextBtn.addEventListener('click',nextSong);
 audio.addEventListener('timeupdate', (event)=> {
     // adjustProgressBar
     const {duration, currentTime} = event.srcElement;
@@ -69,14 +86,10 @@ audio.addEventListener('timeupdate', (event)=> {
         ${currentTime / duration}`;
 });
 
-audio.addEventListener('ended',()=>{
-    playBtn.classList.remove('pause-btn');
-    playBtn.classList.add('play-btn');
-});
+audio.addEventListener( 'ended', nextSong );
 
 
-/*###########################################
-EXECUTION
-###########################################*/
 
-loadSong(songs[0]);
+
+// run before the start
+loadSong(songs[songIndex]);
