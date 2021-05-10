@@ -9,8 +9,6 @@ const innerProgressBar = document.querySelector('.inner-progress-bar');
 
 console.log(innerProgressBar);
 // other variables
-let isAudioPlaying = true;
-let secondsPassed = 1; 
 let intervalID = null;
 
 
@@ -41,7 +39,7 @@ function pauseAudio(){
     audio.pause();
 }
 
-function adjustProgressBar(){
+function adjustProgressBar(e){
     if(!audio.paused){
         const duration = audio.duration;
         innerProgressBar.style.width = `calc( 100% * 
@@ -54,29 +52,31 @@ function adjustProgressBar(){
 
 
 function playOrPauseAudio(){
-    if(audio.paused){
+    if(audio.paused)
         playAudio();
-        intervalID = setInterval(adjustProgressBar,1000);
-    }
-    else{
+    else
         pauseAudio();
-        clearInterval(intervalID);
-       
-    }
-        
-        console.log(audio.videoTracks);
 }
 
 
 // event listeners
 playBtn.addEventListener('click',playOrPauseAudio);
+audio.addEventListener('timeupdate', (event)=> {
+    // adjustProgressBar
+    const {duration, currentTime} = event.srcElement;
 
+    innerProgressBar.style.width = `calc( 100% * 
+        ${currentTime / duration}`;
+});
 
-
+audio.addEventListener('ended',()=>{
+    playBtn.classList.remove('pause-btn');
+    playBtn.classList.add('play-btn');
+});
 
 
 /*###########################################
 EXECUTION
 ###########################################*/
 
-loadSong(songs[5]);
+loadSong(songs[0]);
