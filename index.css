@@ -10,8 +10,8 @@
 * {
   border-radius: 20px;
   text-align: center;
-  letter-spacing: 4px;
-  word-spacing: 7px;
+  letter-spacing: 10px;
+  word-spacing: 2px;
   font-size: 1.1rem;
   font-family: "Ubuntu Mono", sans-serif;
   border-color: var(--greyish);
@@ -32,6 +32,7 @@ body {
   font-size: 2.5rem;
   text-align: center;
 }
+
 .container {
   display: flow-root;
   background-color: crimson;
@@ -40,6 +41,8 @@ body {
   width: 970px;
   height: 580px;
   margin: 0 auto;
+  border-radius: 5%;
+  border: rgb(240, 66, 104) groove 10px;
 }
 
 /*#######################
@@ -57,8 +60,11 @@ body {
 .cassette {
   display: block;
   height: 300px;
-  border: 3px solid rgb(255, 69, 0, 25%);
+  border: 13px groove rgb(255, 69, 0, 30%);
   box-sizing: border-box;
+  border-radius: 5%;
+  object-fit: cover;
+  object-position: left;
 }
 
 .controls {
@@ -84,6 +90,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 90px;
+  border-radius: 50%;
   margin: 0 16px;
 }
 
@@ -146,8 +153,7 @@ body {
   background: var(--bright-pinkish-red);
   height: 350px;
   padding: 10px 0;
-  border: 0 rgb(92, 1, 1) solid;
-
+  border: 0 rgb(184, 1, 1) groove;
   border-width: 20px 0;
   width: 100%;
 }
