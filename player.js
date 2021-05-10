@@ -1,7 +1,7 @@
 // audio
 const audio = document.querySelector('#audio');
 
-// buttons
+// control buttons
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
@@ -10,18 +10,26 @@ const soundBtn = document.querySelector('#sound');
 // inner progress bar
 const innerProgressBar = document.querySelector('#inner-progress-bar');
 
+// song buttons
+const songBtnArr = document.querySelectorAll('.song-btn');
+
 // other variables
-let intervalID = null;
 let songIndex = 0;
 
 const songs = [
-    'jazzyfrenchy',
-    'anewbeginning',
-    'happyrock',
-    'littleidea',
+    'jazzy-frenchy',
+    'a-new-beginning',
+    'happy-rock',
+    'little-idea',
     'ukulele',
-    'creativeminds'  
+    'creative-minds'
 ];
+
+songBtnArr.forEach( (obj,index) => 
+obj.innerHTML = songs[index]
+    .split('-').reduce( (prev,cur) => prev += ` ${cur}` ) 
+);
+
 
 function loadSong(song){
     audio.src = `mp3/${song}.mp3`;
