@@ -5,11 +5,10 @@ const audio = document.querySelector('#audio');
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
-const muteBtn = document.querySelector('#next');
-
+const muteBtn = document.querySelector('#mute');
+const soundBtn = document.querySelector('#sound');
 // inner progress bar
 const innerProgressBar = document.querySelector('#inner-progress-bar');
-
 
 // other variables
 let intervalID = null;
@@ -75,13 +74,18 @@ function playOrPauseAudio(){
 
 
 // event listeners
-playBtn.addEventListener('click',playOrPauseAudio);
-prevBtn.addEventListener('click',previousSong);
-nextBtn.addEventListener('click',nextSong);
-audio.addEventListener('timeupdate', (event)=> {
-    // adjustProgressBar
-    const {duration, currentTime} = event.srcElement;
+playBtn.addEventListener('click', playOrPauseAudio);
 
+prevBtn.addEventListener('click', previousSong);
+
+nextBtn.addEventListener('click', nextSong);
+
+muteBtn.addEventListener('click', ()=>audio.volume = 0);
+
+soundBtn.addEventListener('click', ()=>audio.volume = 1);
+
+audio.addEventListener('timeupdate', (event)=> {
+    const {duration, currentTime} = event.srcElement;
     innerProgressBar.style.width = `calc( 100% * 
         ${currentTime / duration}`;
 });
