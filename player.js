@@ -81,6 +81,13 @@ function playOrPauseAudio(){
 }
 
 
+const changeIndex = ( index ) => {
+    songIndex = index;
+    loadSong( songs[songIndex] );
+    audio.play();
+}
+
+
 // event listeners
 playBtn.addEventListener('click', playOrPauseAudio);
 
@@ -99,6 +106,10 @@ audio.addEventListener('timeupdate', (event)=> {
 });
 
 audio.addEventListener( 'ended', nextSong );
+
+songBtnArr.forEach( (obj,index) =>  obj.addEventListener(
+    'click',()=> changeIndex(index)
+)  );
 
 
 
