@@ -98,7 +98,7 @@ a {
   margin-top: 20px;
 }
 
-.progress-bar-mark {
+.inner-progress-bar {
   height: 10px;
   width: 10px;
   background-color: red;
