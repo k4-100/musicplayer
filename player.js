@@ -22,7 +22,6 @@ function controlAudioPlay(){
     isAudioPlaying = !isAudioPlaying;
 }
 
-function 
 
 
 // event listeners
