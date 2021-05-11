@@ -7,9 +7,10 @@ const prevBtn  = document.querySelector( '#prev' );
 const nextBtn  = document.querySelector( '#next' );
 const muteBtn  = document.querySelector( '#mute' );
 const soundBtn = document.querySelector( '#sound' );
-// inner progress bar
-const innerProgressBar = document
-    .querySelector( '#inner-progress-bar' );
+
+// progress bar
+const progressBar      = document.querySelector( '#progress-bar')
+const innerProgressBar = document.querySelector( '#inner-progress-bar' );
 
 // song buttons
 const songBtnArr = document.querySelectorAll( '.song-btn' );
@@ -38,8 +39,6 @@ function loadSong ( song ) {
     audio.src = `mp3/${ song }.mp3`;
     songBtnArr[ songIndex ].style.borderColor = 'var( --current-song-btn )';
 };
-
-
 
 function playAudio(){
     playBtn.classList.remove( 'play-btn' );
@@ -99,6 +98,8 @@ function handleClickOnSongBtn( index ) {
 }
 
 
+
+
 // event listeners
 playBtn.addEventListener( 'click', playOrPauseAudio );
 
@@ -115,11 +116,24 @@ soundBtn.addEventListener(
     'click', 
     ()=> audio.volume = 1
 );
+progressBar.addEventListener( 
+    'click', 
+    event => {
+        /** width of progressBar */
+        const width = progressBar.offsetWidth;
+        /** x axis of mouse position of click in coords relative to progressBar position */
+        const mPosX = event.clientX - progressBar.offsetLeft;
+        /** seconds to pixels factor */ 
+        const s2rRatio = width / audio.duration;
+        // set current time of audio
+        audio.currentTime =  mPosX / s2rRatio;
+    }
+);
 
 audio.addEventListener( 
     'timeupdate', 
     event => {
-        const { duration, currentTime } = event.srcElement;
+        const { duration, currentTime } = audio;
         innerProgressBar.style.width = 
             `calc( 100% * ${ currentTime / duration }`;
     }
