@@ -24,21 +24,6 @@ body {
   margin: 0;
 }
 
-footer {
-  background: rgb(233, 77, 77);
-  margin: 0;
-  height: 50px;
-  position: absolute;
-  bottom: 0;
-
-  width: 100%;
-  border-radius: 0;
-  font-size: 2.5rem;
-  padding: 2px 0;
-  border: rgb(245, 96, 79) 1px solid;
-  border-width: 20px 0;
-}
-
 a {
   font-size: inherit;
   text-decoration: none;
@@ -69,6 +54,21 @@ a {
   border: rgb(240, 66, 104) groove 10px;
 }
 
+footer {
+  background: var(--bright-pinkish-red);
+  margin: 0;
+  height: 50px;
+  position: absolute;
+
+  bottom: 0vh;
+
+  width: 100%;
+  border-radius: 0;
+  font-size: 2.5rem;
+  padding: 2px 0;
+  border: var(--pinkish-red) 1px groove;
+  border-width: 20px 0;
+}
 /*#######################
 .left-side-container 
 #######################*/

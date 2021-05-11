@@ -15,7 +15,7 @@ const songBtnArr = document.querySelectorAll('.song-btn');
 
 // other variables
 let songIndex = 0;
-
+let paused = false;
 const songs = [
     'jazzy-frenchy',
     'a-new-beginning',
@@ -41,12 +41,14 @@ function playAudio(){
     playBtn.classList.remove('play-btn');
     playBtn.classList.add('pause-btn');
     audio.play();
+    paused = false;
 }
 
 function pauseAudio(){
     playBtn.classList.remove('pause-btn');
     playBtn.classList.add('play-btn');
     audio.pause();
+    paused = true;
 }
 
 function previousSong(){
@@ -56,7 +58,7 @@ function previousSong(){
         songIndex = songs.length-1;
 
     loadSong( songs[songIndex] );
-    audio.play();
+    paused || audio.play();
 }
 
 
@@ -67,7 +69,7 @@ function nextSong(){
         songIndex = 0;
 
     loadSong( songs[songIndex] );
-    audio.play();
+    paused || audio.play();
 }
 
 
