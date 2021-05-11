@@ -34,7 +34,10 @@ obj.innerHTML = songs[ index ]
 );
 
 
-const loadSong = song => audio.src = `mp3/${ song }.mp3`;
+function loadSong ( song ) {
+    audio.src = `mp3/${ song }.mp3`;
+    songBtnArr[ 0 ].style.borderColor = 'var( --current-song-btn )';
+};
 
 
 
@@ -86,8 +89,13 @@ function playOrPauseAudio(){
 
 function handleClickOnSongBtn( index ) {
     songIndex = index;
-    loadSong( songs[ songIndex ] );
+    loadSong( songs[ songIndex ] ); 
     playAudio();
+    songBtnArr.forEach( 
+            ( songBtn, i ) => ( i === index ) 
+                ?  songBtn.style.borderColor = 'var( --current-song-btn )'  
+                :  songBtn.style.borderColor = 'silver'
+    ); 
 }
 
 

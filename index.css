@@ -5,6 +5,7 @@
   --bright-pinkish-red: rgb(255, 71, 108);
   --greyish: hsl(0, 0%, 75%);
   --greyish-black: hsl(0, 0%, 12%);
+  --current-song-btn: rgb(255, 0, 76);
 }
 
 * {
@@ -204,24 +205,26 @@ footer {
   width: 100%;
   height: 15%;
   margin: 3px 0;
-  border-width: 10px;
-  border-style: ridge;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 8px;
   box-sizing: border-box;
   font-weight: bold;
   font-size: 1.3rem;
+  background: hsl(0, 0%, 90%);
   text-transform: capitalize;
-  transition-property: background;
+  transition-property: background-color, border-color;
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
 }
 
 .song-btn:hover {
-  background: rgb(255, 0, 76);
+  background: rgb(255, 119, 157);
 }
 
 .song-btn:active {
   transition-duration: 1ms;
-  background-color: rgb(248, 107, 149);
+  background: var(--current-song-btn);
 }
 
 .scroll-bar {
