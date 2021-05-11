@@ -45,8 +45,6 @@ a {
 .container {
   display: flow-root;
   background-color: crimson;
-  position: relative;
-
   width: 970px;
   height: 580px;
   margin: 0 auto;
@@ -59,9 +57,7 @@ footer {
   margin: 0;
   height: 50px;
   position: absolute;
-
   bottom: 0vh;
-
   width: 100%;
   border-radius: 0;
   font-size: 2.5rem;
@@ -69,6 +65,7 @@ footer {
   border: var(--pinkish-red) 1px groove;
   border-width: 20px 0;
 }
+
 /*#######################
 .left-side-container 
 #######################*/
@@ -185,7 +182,7 @@ footer {
   margin-top: 5px;
 }
 
-.inner-container {
+.song-container {
   position: relative;
   background: var(--bright-pinkish-red);
   height: 350px;
