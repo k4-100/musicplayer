@@ -84,7 +84,7 @@ function playOrPauseAudio(){
 }
 
 
-function changeIndex( index ) {
+function handleClickOnSongBtn( index ) {
     songIndex = index;
     loadSong( songs[ songIndex ] );
     playAudio();
@@ -121,7 +121,7 @@ audio.addEventListener( 'ended', nextSong );
 
 songBtnArr.forEach( ( obj, index ) =>  obj.addEventListener(
     'click', 
-    ()=> changeIndex( index )
+    ()=> handleClickOnSongBtn( index )
 ));
 
 
