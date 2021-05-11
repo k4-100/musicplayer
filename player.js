@@ -36,7 +36,7 @@ obj.innerHTML = songs[ index ]
 
 function loadSong ( song ) {
     audio.src = `mp3/${ song }.mp3`;
-    songBtnArr[ 0 ].style.borderColor = 'var( --current-song-btn )';
+    songBtnArr[ songIndex ].style.borderColor = 'var( --current-song-btn )';
 };
 
 
@@ -56,24 +56,24 @@ function pauseAudio(){
 }
 
 function previousSong(){
+    songBtnArr[ songIndex ].style.borderColor = 'silver';
     songIndex--;
-
     if( songIndex < 0 )
         songIndex = songs.length-1;
-
     loadSong( songs[ songIndex ] );
     paused || audio.play();
+    songBtnArr[ songIndex ].style.borderColor = 'var( --current-song-btn )';
 }
 
 
 function nextSong(){
+    songBtnArr[ songIndex ].style.borderColor = 'silver';
     songIndex++;
-
     if( songIndex > songs.length -1 )
         songIndex = 0;
-
     loadSong( songs[ songIndex ] );
     paused || audio.play();
+    songBtnArr[ songIndex ].style.borderColor = 'var( --current-song-btn )';
 }
 
 
