@@ -10,8 +10,7 @@
 * {
   border-radius: 20px;
   text-align: center;
-  letter-spacing: 6px;
-  word-spacing: 2px;
+  letter-spacing: 3px;
   font-size: 1.1rem;
   font-family: "Ubuntu Mono", sans-serif;
   border-color: var(--greyish);
@@ -208,6 +207,21 @@ footer {
   border-width: 10px;
   border-style: ridge;
   box-sizing: border-box;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  transition-property: background;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+.song-btn:hover {
+  background: rgb(255, 0, 76);
+}
+
+.song-btn:active {
+  transition-duration: 1ms;
+  background-color: rgb(248, 107, 149);
 }
 
 .scroll-bar {

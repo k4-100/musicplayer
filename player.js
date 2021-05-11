@@ -84,10 +84,10 @@ function playOrPauseAudio(){
 }
 
 
-const changeIndex = ( index ) => {
+function changeIndex( index ) {
     songIndex = index;
     loadSong( songs[ songIndex ] );
-    audio.play();
+    playAudio();
 }
 
 
