@@ -1,21 +1,22 @@
 // audio
-const audio = document.querySelector('#audio');
+const audio = document.querySelector( '#audio' );
 
 // control buttons
-const playBtn = document.querySelector('#play');
-const prevBtn = document.querySelector('#prev');
-const nextBtn = document.querySelector('#next');
-const muteBtn = document.querySelector('#mute');
-const soundBtn = document.querySelector('#sound');
+const playBtn  = document.querySelector( '#play' );
+const prevBtn  = document.querySelector( '#prev' );
+const nextBtn  = document.querySelector( '#next' );
+const muteBtn  = document.querySelector( '#mute' );
+const soundBtn = document.querySelector( '#sound' );
 // inner progress bar
-const innerProgressBar = document.querySelector('#inner-progress-bar');
+const innerProgressBar = document
+    .querySelector( '#inner-progress-bar' );
 
 // song buttons
-const songBtnArr = document.querySelectorAll('.song-btn');
+const songBtnArr = document.querySelectorAll( '.song-btn' );
 
 // other variables
 let songIndex = 0;
-let paused = false;
+let paused = true;
 const songs = [
     'jazzy-frenchy',
     'a-new-beginning',
@@ -25,28 +26,28 @@ const songs = [
     'creative-minds'
 ];
 
-songBtnArr.forEach( (obj,index) => 
-obj.innerHTML = songs[index]
-    .split('-').reduce( (prev,cur) => prev += ` ${cur}` ) 
+// assinged text of each song with appropriate button
+songBtnArr.forEach( ( obj, index ) => 
+obj.innerHTML = songs[ index ]
+    .split( '-' )
+        .reduce( ( prev, cur ) => prev += ` ${ cur }` ) 
 );
 
 
-function loadSong(song){
-    audio.src = `mp3/${song}.mp3`;
+const loadSong = song => audio.src = `mp3/${ song }.mp3`;
 
-}
 
 
 function playAudio(){
-    playBtn.classList.remove('play-btn');
-    playBtn.classList.add('pause-btn');
+    playBtn.classList.remove( 'play-btn' );
+    playBtn.classList.add( 'pause-btn' );
     audio.play();
     paused = false;
 }
 
 function pauseAudio(){
-    playBtn.classList.remove('pause-btn');
-    playBtn.classList.add('play-btn');
+    playBtn.classList.remove( 'pause-btn' );
+    playBtn.classList.add( 'play-btn' );
     audio.pause();
     paused = true;
 }
@@ -54,10 +55,10 @@ function pauseAudio(){
 function previousSong(){
     songIndex--;
 
-    if(songIndex < 0)
+    if( songIndex < 0 )
         songIndex = songs.length-1;
 
-    loadSong( songs[songIndex] );
+    loadSong( songs[ songIndex ] );
     paused || audio.play();
 }
 
@@ -65,10 +66,10 @@ function previousSong(){
 function nextSong(){
     songIndex++;
 
-    if(songIndex > songs.length -1)
+    if( songIndex > songs.length -1 )
         songIndex = 0;
 
-    loadSong( songs[songIndex] );
+    loadSong( songs[ songIndex ] );
     paused || audio.play();
 }
 
@@ -76,7 +77,7 @@ function nextSong(){
 
 
 function playOrPauseAudio(){
-    if(audio.paused)
+    if( audio.paused )
         playAudio();
     else
         pauseAudio();
@@ -85,36 +86,46 @@ function playOrPauseAudio(){
 
 const changeIndex = ( index ) => {
     songIndex = index;
-    loadSong( songs[songIndex] );
+    loadSong( songs[ songIndex ] );
     audio.play();
 }
 
 
 // event listeners
-playBtn.addEventListener('click', playOrPauseAudio);
+playBtn.addEventListener( 'click', playOrPauseAudio );
 
-prevBtn.addEventListener('click', previousSong);
+prevBtn.addEventListener( 'click', previousSong );
 
-nextBtn.addEventListener('click', nextSong);
+nextBtn.addEventListener( 'click', nextSong );
 
-muteBtn.addEventListener('click', ()=>audio.volume = 0);
+muteBtn.addEventListener( 
+    'click',  
+    ()=> audio.volume = 0
+);
 
-soundBtn.addEventListener('click', ()=>audio.volume = 1);
+soundBtn.addEventListener( 
+    'click', 
+    ()=> audio.volume = 1
+);
 
-audio.addEventListener('timeupdate', (event)=> {
-    const {duration, currentTime} = event.srcElement;
-    innerProgressBar.style.width = `calc( 100% * 
-        ${currentTime / duration}`;
-});
+audio.addEventListener( 
+    'timeupdate', 
+    event => {
+        const { duration, currentTime } = event.srcElement;
+        innerProgressBar.style.width = 
+            `calc( 100% * ${ currentTime / duration }`;
+    }
+);
 
 audio.addEventListener( 'ended', nextSong );
 
-songBtnArr.forEach( (obj,index) =>  obj.addEventListener(
-    'click',()=> changeIndex(index)
-)  );
+songBtnArr.forEach( ( obj, index ) =>  obj.addEventListener(
+    'click', 
+    ()=> changeIndex( index )
+));
 
 
 
 
 // run before the start
-loadSong(songs[songIndex]);
+loadSong( songs[ songIndex ] );
