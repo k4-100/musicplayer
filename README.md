@@ -1,5 +1,9 @@
-# simple music player made in javascript,
+# simple music player
 
-html and css
+# Tools used:
+
+- html
+- css
+- vanilla js
 
 Source of music: [Bensound](https://www.bensound.com/)
